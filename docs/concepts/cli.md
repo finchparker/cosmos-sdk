@@ -12,8 +12,6 @@ This document describes how to create a commmand-line interface for an SDK appli
 2. [Commands](#commands)
 3. [Flags](#flags)
 4. [Initialization and Configurations](#initialization-and-configurations)
-5. [REST Routes](#rest-routes)
-
 
 ## Application CLI
 
@@ -69,20 +67,6 @@ Application queries are objects that allow users to retrieve information about t
 * **Block** command from the SDK rpc client tools, which displays the block data for a given height.
 * Any application-specific query commands defined by the application developer.
 * All commands in each module the application is dependent on, retrieved by calling `GetQueryCmd()` on all the modules or using the Module Manager's `AddQueryCommands()` function. 
-
-### Query Example
-
-Here is an example of what a user might enter into their command-line to query how many Atoms they have delegated. The application is called `app`: 
-
-```bash
-appcli query staking delegations <delegatorAddress>
-
-```
-
-The root command is `appcli`, which indicates the user is interacting with `app`. Their `query` command is to be routed to the `staking` module, which includes `delegations` as one of the possible queries. The argument provided is `delegatorAddress`, and no flags were included which means the user's already-configured flags are used in processing this command. 
-
-When the command is executed, the first thing it will do is create a [`CLIContext`](./context.md) using the application's codec. The `delegatorAddress` provided by the user is used to create query parameters, and a route is constructed using the application's provided `queryRoute`. The query parameters and route and used to make an [ABCI call](https://tendermint.com/docs/spec/abci/abci.html#messages) (a Tendermint RPC), `ABCIQueryWithOptions`. The application inherits [ABCI Query](https://tendermint.com/docs/spec/abci/abci.html#query) capabilities from [BaseApp](./baseapp.md); BaseApp handles the query by unmarshaling the request, parsing the query path, and routing it to the appropriate queryable multistore that stores delegations data for this application. 
-
     
 ## Flags
 
@@ -155,6 +139,6 @@ Queries also have flags.
 
 TODO
 
-## REST Routes
+## Next
 
-TODO: A `registerRoutes` function 
+Read about how to build a CLI for your module [here](./module-interfaces#cli)
