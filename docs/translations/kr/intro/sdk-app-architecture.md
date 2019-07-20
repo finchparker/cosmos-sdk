@@ -57,3 +57,4 @@
 텐더민트 합의 알고리즘은 '검증인(Validators)'이라는 특정 노드 세트를 기반으로 작동합니다. 검증인의 주 역할은 트랜잭션을 블록 단위로 블록체인에 추가하는 것입니다. 특정 블록에는 V 검증인 세트 검증인 존재하며, 이 V 검증인 세트 안에 있는 검증인 중 하나의 검증인이 다음 블록 생성자로 알고리즘에 의해 선택됩니다. 만약 블록이 V 검증인 세트 2/3 이상의 [프리보트(prevote)](https://tendermint.com/docs/spec/consensus/consensus.html#prevote-step-height-h-round-r)와 [프리커밋(precommit)](https://tendermint.com/docs/spec/consensus/consensus.html#precommit-step-height-h-round-r)을 받고 내용 트랜잭션이 유효한 경우 해당 블록은 '유효(valid)'한 것으로 간주됩니다. 검증인 세트는 스테이트 머신에 작성된 규칙에 따라서 바뀔 수 있습니다. 알고리즘에 대해 더 자세한 정보는 [여기](https://tendermint.com/docs/introduction/what-is-tendermint.html#consensus-overview)를 참고하세요.
 
 코스모스 SDK 애플리케이션의 주요 파트는 네트워크에 포함되어있는 노드가 각자 로컬 환경에서 운영하는 블록체인 데몬(daemon)입니다. 만약 *검증인 세트*의 1/3 이하가 악의적(byzantine)인 경우, 각 노드는 동시에 스테이트를 조회할때 동일한 결과를 받게됩니다.
+
